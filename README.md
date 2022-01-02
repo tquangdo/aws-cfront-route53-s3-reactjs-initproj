@@ -64,16 +64,17 @@
 ![withoutcfront](screenshots/withoutcfront.png)
 
 ## ACM (US East (N. Virginia) Region (us-east-1))
-+ request 2 public certs for `www.dtqsimplified.io` & `dtqsimplified.io`
-+ click `create records in Route53` (💣💣)
-> status=`issued` with `registered domains` condition
++ request 2 public certs for `www.dtqsimplified.io` & `dtqsimplified.io` (💣💣)
++ click `create records in Route53`
+> status=`issued` with condition `registered domains` is OK!!!
++
 ![https](screenshots/https.png)
 
 ## cfront
-+ `Create distribution`:
++ create 2 distributions for `www.dtqsimplified.io` & `dtqsimplified.io`
 1. origin domain = `www.dtqsimplified.io.s3-website-us-west-2.amazonaws.com`
 2. Viewer protocol policy = `Redirect HTTP to HTTPS`
-3. Alternate domain name (CNAME) = `www.dtqsimplified.io` (+ `dtqsimplified.io`)
+3. Alternate domain name (CNAME) = `www.dtqsimplified.io` (`dtqsimplified.io`)
 4. Custom SSL certificate = ACM (💣💣)
 ![sslcert](screenshots/sslcert.png)
 + after create distribution we can access cfront URL on browser
