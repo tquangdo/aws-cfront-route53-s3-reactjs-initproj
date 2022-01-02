@@ -1,70 +1,92 @@
-# Getting Started with Create React App
+# aws-cfront-s3-reactjs-initproj 🐳
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Stars](https://img.shields.io/github/stars/tquangdo/aws-cfront-s3-reactjs-initproj?color=f05340)
+![Issues](https://img.shields.io/github/issues/tquangdo/aws-cfront-s3-reactjs-initproj?color=f05340)
+![Forks](https://img.shields.io/github/forks/tquangdo/aws-cfront-s3-reactjs-initproj?color=f05340)
+[![Report an issue](https://img.shields.io/badge/Support-Issues-green)](https://github.com/tquangdo/aws-cfront-s3-reactjs-initproj/issues/new)
 
-## Available Scripts
+![overall](screenshots/overall.png)
 
-In the project directory, you can run:
+## reference
+[youtube](https://www.youtube.com/watch?v=mls8tiiI3uc)
 
-### `npm start`
+## s3
++ create 2 buckets `dtqsimplified.io` & `www.dtqsimplified.io`
+### `www.dtqsimplified.io`
++ upload all reactjs files & folders in `build`
+```shell
+# aws s3 ls s3://www.dtqsimplified.io/
+                           PRE static/
+2022-01-02 17:36:25        605 asset-manifest.json
+2022-01-02 17:36:26       3870 favicon.ico
+2022-01-02 17:36:26        644 index.html
+2022-01-02 17:36:27       5347 logo192.png
+2022-01-02 17:36:28       9664 logo512.png
+2022-01-02 17:36:28        492 manifest.json
+2022-01-02 17:36:29         67 robots.txt
+```
++ make bucket public with policy
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Statement1",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::www.dtqsimplified.io/*"
+            ]
+        }
+    ]
+}
+```
++ enable `static website hosting`
+![wwwhost](screenshots/wwwhost.png)
+### `dtqsimplified.io`
++ enable `static website hosting`
+![nowwwhost](screenshots/nowwwhost.png)
++ because we chose `redirect request for an object`, so if we click in `Bucket website endpoint` there will be redirected to `http://www.dtqsimplified.io/`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## route53
++ `registered domains` > create `dtqsimplified.io` (💣💣)
+![createdomain](screenshots/createdomain.png)
++ in `hosted zones` create `dtqsimplified.io`
+![hostzonebef](screenshots/hostzonebef.png)
++ click `create record` > routing policy= `simple routing` > `define simple record`
+![simplerec](screenshots/simplerec.png)
++ create 2 records & result:
+![hostzoneaft](screenshots/hostzoneaft.png)
++ access `dtqsimplified.io` on browser (💣💣)
+![withoutcfront](screenshots/withoutcfront.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ACM (US East (N. Virginia) Region (us-east-1))
++ request 2 public certs for `www.dtqsimplified.io` & `dtqsimplified.io`
++ click `create records in Route53` (💣💣)
+> status=`issued` with `registered domains` condition
+![https](screenshots/https.png)
 
-### `npm test`
+## cfront
++ `Create distribution`:
+1. origin domain = `www.dtqsimplified.io.s3-website-us-west-2.amazonaws.com`
+2. Viewer protocol policy = `Redirect HTTP to HTTPS`
+3. Alternate domain name (CNAME) = `www.dtqsimplified.io` (+ `dtqsimplified.io`)
+4. Custom SSL certificate = ACM (💣💣)
+![sslcert](screenshots/sslcert.png)
++ after create distribution we can access cfront URL on browser
+![cfrontbs](screenshots/cfrontbs.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## s3
+### `dtqsimplified.io`
++ change protocol from `http` -> `https`
 
-### `npm run build`
+## route53
+change route traffic of record `www.dtqsimplified.io` & `dtqsimplified.io` from `s3` -> `cfront` (💣💣)
+![route53rt](screenshots/route53rt.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## final result
++ access on browser `www.dtqsimplified.io` will have https + "via cfront"(💣💣)
+![final](screenshots/final.png)
