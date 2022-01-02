@@ -13,7 +13,7 @@
 ## s3
 + create 2 buckets `dtqsimplified.io` & `www.dtqsimplified.io`
 ### `www.dtqsimplified.io`
-+ upload all reactjs files & folders in `build`
++ upload all reactjs files & folders in `build` (after `npm run build`)
 ```shell
 # aws s3 ls s3://www.dtqsimplified.io/
                            PRE static/
