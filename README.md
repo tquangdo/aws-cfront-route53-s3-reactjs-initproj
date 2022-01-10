@@ -1,9 +1,9 @@
-# aws-cfront-s3-reactjs-initproj 🐳
+# aws-cfront-route53-s3-reactjs-initproj 🐳
 
-![Stars](https://img.shields.io/github/stars/tquangdo/aws-cfront-s3-reactjs-initproj?color=f05340)
-![Issues](https://img.shields.io/github/issues/tquangdo/aws-cfront-s3-reactjs-initproj?color=f05340)
-![Forks](https://img.shields.io/github/forks/tquangdo/aws-cfront-s3-reactjs-initproj?color=f05340)
-[![Report an issue](https://img.shields.io/badge/Support-Issues-green)](https://github.com/tquangdo/aws-cfront-s3-reactjs-initproj/issues/new)
+![Stars](https://img.shields.io/github/stars/tquangdo/aws-cfront-route53-s3-reactjs-initproj?color=f05340)
+![Issues](https://img.shields.io/github/issues/tquangdo/aws-cfront-route53-s3-reactjs-initproj?color=f05340)
+![Forks](https://img.shields.io/github/forks/tquangdo/aws-cfront-route53-s3-reactjs-initproj?color=f05340)
+[![Report an issue](https://img.shields.io/badge/Support-Issues-green)](https://github.com/tquangdo/aws-cfront-route53-s3-reactjs-initproj/issues/new)
 
 ![overall](screenshots/overall.png)
 
