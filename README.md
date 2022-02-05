@@ -5,7 +5,7 @@
 ![Forks](https://img.shields.io/github/forks/tquangdo/aws-cfront-route53-s3-reactjs-initproj?color=f05340)
 [![Report an issue](https://img.shields.io/badge/Support-Issues-green)](https://github.com/tquangdo/aws-cfront-route53-s3-reactjs-initproj/issues/new)
 
-![overall](screenshots/overall.png)
+![overview](screenshots/overview.png)
 
 ## reference
 [youtube](https://www.youtube.com/watch?v=mls8tiiI3uc)
